@@ -32,6 +32,7 @@
               ./modules/graphics.nix
               ./modules/sound.nix
               ./modules/printing.nix
+              ./modules/git.nix
               ./modules/postgres.nix
               ./modules/neovim.nix
               ./modules/steam.nix

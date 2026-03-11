@@ -28,8 +28,6 @@
     hunspellDicts.en_US
     hunspellDicts.de_DE
     ripgrep
-    lazygit
-    git
     unzip
     clinfo
     nil
