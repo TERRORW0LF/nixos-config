@@ -1,0 +1,18 @@
+{
+	"clang": {
+		"compilers": {
+			"C": "clang",
+			"CXX": "clang++"
+		},
+		"query_driver": "clang++",
+		"generator": "Unix Makefiles"
+	},
+	"gcc": {
+		"compilers":  {
+			"C": "gcc",
+			"CXX": "g++"
+		},
+		"query_driver": "g++",
+		"generator": "Unix Makefiles"
+	}
+}
