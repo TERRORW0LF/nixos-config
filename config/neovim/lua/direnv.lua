@@ -4,3 +4,4 @@ require('direnv').setup({
         enabled = true,
     },
 })
+

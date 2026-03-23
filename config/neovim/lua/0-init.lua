@@ -1,7 +1,8 @@
 vim.g.mapleader = " "
 vim.diagnostic.enable = true
 vim.diagnostic.config({
-	virtual_lines = true,
+	virtual_lines = false,
+	virtual_text = true
 })
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('lsp', { clear = true }),
@@ -14,6 +15,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		})
 	end
 })
+
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', 'ß', '$')
 
 local nav_opts = { buffer = 0 }
 vim.keymap.set({'n', 'i', 't'}, '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
