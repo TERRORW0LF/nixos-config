@@ -20,11 +20,19 @@
         desktop =
           let
             name = "desktop";
-            level = -28.0;
+            level = "-28.0";
+            input = "alsa_input.usb-Beyerdynamic_FOX_5.00-00.mono-fallback";
           in
           nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            specialArgs = { inherit inputs name level; };
+            specialArgs = {
+              inherit
+                inputs
+                name
+                level
+                input
+                ;
+            };
             modules = [
               (import ./overlays)
               ./hosts/desktop.nix

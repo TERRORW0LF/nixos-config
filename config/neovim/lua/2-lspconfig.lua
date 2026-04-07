@@ -17,32 +17,6 @@ vim.lsp.config('nil_ls', {
 		},
 	},
 })
-vim.lsp.config('emmylua_ls', {
-	capabilities = capabilities,
-	settings = {
-		format = {
-			externalTool = {
-				program = 'stylua',
-				args = { '-', '--stdin-filepath', '${file}', },
-				timeout = 5000,
-			},
-			externalToolRangeFormat = {
-				program = 'stylua',
-				args = {
-					'-',
-					'--stdin-filepath',
-					'${file}',
-					'--indent-width=${indent_size}',
-					'--indent-type',
-					'${use_tabs?Tabs:Spaces}',
-					'--range-start=${start_offset}',
-					'--range-end=${end_offset}',
-				},
-				timeout = 5000,
-			},
-		},
-	},
-})
 
 for _, lsp in pairs(servers) do
 	vim.lsp.enable(lsp)
@@ -56,3 +30,15 @@ vim.api.nvim_create_autocmd('User', {
 		end
 	end,
 })
+
+vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition)
+vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition)
+vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action)
+vim.keymap.set('n', '<leader>lH', vim.lsp.buf.hover)
+vim.keymap.set('n', '<leader>lh', vim.lsp.buf.signature_help)
+vim.keymap.set('n', '<leader>ls', vim.lsp.buf.document_symbol)
+vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation)
+vim.keymap.set('n', '<leader>lc', vim.lsp.buf.incoming_calls)
+vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references)
+vim.keymap.set('n', '<leader>lR', vim.lsp.buf.rename)
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)

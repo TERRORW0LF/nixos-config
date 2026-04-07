@@ -1,4 +1,9 @@
-{ pkgs, level, ... }:
+{
+  pkgs,
+  level,
+  input,
+  ...
+}:
 {
   # Enable sound with pipewire.
   security.rtkit.enable = true;
@@ -12,7 +17,7 @@
 
     extraLv2Packages = [ pkgs.lsp-plugins ];
     extraConfig.pipewire = {
-      "90-normalize-mic" = import ../config/pipewire.nix { inherit level; };
+      "90-normalize-mic" = pkgs.callPackage ../config/pipewire { inherit level input; };
     };
   };
 }
