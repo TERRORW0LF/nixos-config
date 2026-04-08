@@ -7,7 +7,7 @@
 }:
 let
   values = lib.trivial.importJSON (
-    /. + "${(pkgs.callPackage ./values.nix { inherit level; })}/result.json"
+    (pkgs.callPackage ./values.nix { inherit level; }) + "/result.json"
   );
 in
 {
@@ -27,7 +27,7 @@ in
               "control" = {
                 "at" = 10.0;
                 "rt" = 100.0;
-                "gt" = values.gate; # 0.001585; # pow 10 (level / 10);
+                "gt" = values.gate.gt; # 0.001585;
                 "gz" = 0.1;
                 "gr" = 0.0;
               };
@@ -40,11 +40,11 @@ in
               "control" = {
                 "cm" = 1;
                 "at" = 0.0;
-                "al" = values.comp.al; # 0.01; # (level - 12.0) / 2 - 12.0;
+                "al" = values.comp.al;
                 "rt" = 100.0;
                 "bth" = 0.000001;
-                "cr" = values.comp.cr; # 0.109648; # (-level - 12.0) * 0.6;
-                "kn" = values.comp.kn; # 39.810717; # (level - 12.0);
+                "cr" = values.comp.cr;
+                "kn" = values.comp.kn;
               };
             }
             {
@@ -59,7 +59,6 @@ in
                 "al" = 0.063096;
               };
             }
-
             {
               "type" = "lv2";
               "name" = "lim";
@@ -90,7 +89,7 @@ in
         };
         "capture.props" = {
           "node.passive" = true;
-          "node.target" = "alsa_input.usb-Beyerdynamic_FOX_5.00-00.mono-fallback";
+          "node.target" = input;
           "node.name" = "mic_input.normalize";
         };
         "playback.props" = {

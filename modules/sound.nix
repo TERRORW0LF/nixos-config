@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   level,
   input,
   ...
@@ -17,7 +18,14 @@
 
     extraLv2Packages = [ pkgs.lsp-plugins ];
     extraConfig.pipewire = {
-      "90-normalize-mic" = pkgs.callPackage ../config/pipewire { inherit level input; };
+      "90-normalize-mic" = import ../config/pipewire {
+        inherit
+          pkgs
+          lib
+          level
+          input
+          ;
+      };
     };
   };
 }
