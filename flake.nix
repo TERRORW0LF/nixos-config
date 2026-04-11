@@ -38,6 +38,7 @@
               ./hosts/desktop.nix
               ./modules/base.nix
               ./modules/graphics.nix
+              ./modules/graphical.nix
               ./modules/sound.nix
               ./modules/printing.nix
               ./modules/git.nix
