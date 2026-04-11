@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  imports = [ ./hardware-configuration.nix ];
+
   # Bootloader.
   boot.loader.grub.enable = false;
   boot.loader.systemd-boot.enable = true;
@@ -9,7 +11,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovide
-    (callPackage ../modules/vscode.nix { })
+    (callPackage ../../modules/vscode.nix { })
     matlab
     haruna
     kdePackages.kcalc
