@@ -3,5 +3,11 @@ require('direnv').setup({
     statusline = {
         enabled = true,
     },
+	keybindings = {
+		allow = "<Leader>ea",
+		deny = "<Leader>ed",
+		reload = "<Leader>er",
+		edit = "<Leader>ee",
+	},
 })
 
