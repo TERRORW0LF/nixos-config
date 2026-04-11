@@ -4,6 +4,8 @@
     ./hardware-configuration.nix
   ];
 
+  nix.package = pkgs.nixVersions.latest;
+
   boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
