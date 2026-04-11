@@ -34,8 +34,9 @@
                 ;
             };
             modules = [
-              (import ./overlays)
-              ./hosts/desktop.nix
+              ./overlays
+              ./hosts/base.nix
+              ./hosts/desktop
               ./modules/base.nix
               ./modules/graphics.nix
               ./modules/graphical.nix
@@ -48,17 +49,32 @@
               ./modules/obs.nix
               ./modules/virtualisation.nix
               ./users/finn.nix
-              ./hardware-configuration.nix
             ];
           };
         laptop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ];
         };
-        rpi = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          modules = [ ];
-        };
+        rpi =
+          let
+            name = "rpi";
+          in
+          nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+            specialArgs = {
+              inherit inputs name;
+            };
+            modules = [
+              ./overlays
+              ./hosts/base.nix
+              ./hosts/rpi
+              ./modules/ssh.nix
+              ./modules/git.nix
+              ./modules/neovim.nix
+              ./modules/virtualisation.nix
+              ./users/finn.nix
+            ];
+          };
       };
     };
 }

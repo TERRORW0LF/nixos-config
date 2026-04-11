@@ -15,4 +15,8 @@
         packages.all.start = plugins;
       };
   };
+  environment.systemPackages = with pkgs; [
+    ripgrep
+    fd
+  ];
 }
