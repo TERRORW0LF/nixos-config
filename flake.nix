@@ -68,11 +68,12 @@
               ./overlays
               ./hosts/base.nix
               ./hosts/rpi
+              ./modules/base.nix
               ./modules/ssh.nix
               ./modules/git.nix
               ./modules/neovim.nix
               ./modules/virtualisation.nix
-              ./users/finn.nix
+              ./users/rpi.nix
             ];
           };
       };
