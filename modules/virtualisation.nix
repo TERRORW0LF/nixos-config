@@ -13,12 +13,7 @@
     # Docker
     docker = {
       enable = true;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
       daemon.settings = {
-        data-root = "/home/finnb/Docker";
         userland-proxy = false;
         experimental = true;
         metrics-addr = "0.0.0.0:9323";

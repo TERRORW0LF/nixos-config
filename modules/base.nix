@@ -35,18 +35,10 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # Use wayland for electron / chromium
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "nodeadkeys";
+  # Shell aliases
+  programs.bash.shellAliases = {
+    delgen = "deleteGens() { nix profile wipe-history --profile /nix/var/nix/profiles/system \"$@\"; nix store gc; }; deleteGens";
+    sdelgen = "sdeleteGens() { sudo nix profile wipe-history --profile /nix/var/nix/profiles/system \"$@\"; sudo nix store gc; }; sdeleteGens";
   };
 
   # Configure console keymap
@@ -75,9 +67,6 @@
   # Enable direnv for easy dev environments
   programs.direnv.enable = true;
   programs.dconf.enable = true;
-
-  # Webbrowser
-  programs.firefox.enable = true;
 
   # List services that you want to enable:
   services.onedrive.enable = true;
