@@ -56,9 +56,35 @@
               ./users/finn.nix
             ];
           };
-        laptop = nixpkgs.lib.nixosSystem {
-          modules = [ ];
-        };
+        laptop =
+          let
+            name = "laptop";
+            level = "-28.0";
+            input = "alsa_input.pci-0000_04_00.6.HiFi__Mic1__source";
+          in
+          nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit inputs name level input;
+            };
+            modules = [
+              ./overlays
+              ./hosts/base.nix
+              ./hosts/laptop
+              ./modules/base.nix
+              ./modules/graphics.nix
+              ./modules/graphical.nix
+              ./modules/sound.nix
+              ./modules/printing.nix
+              ./modules/git.nix
+              ./modules/postgres.nix
+              ./modules/neovim.nix
+              ./modules/steam.nix
+              ./modules/obs.nix
+              ./modules/virtualisation.nix
+              ./users/finn.nix
+            ];
+          };
         rpi =
           let
             name = "rpi";
