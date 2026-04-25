@@ -29,5 +29,17 @@
     clinfo
   ];
 
+  age.identityPaths = [ "/home/finnb/.ssh/laptop" ];
+
+  systemd.user.services.asound-restore = {
+    enable = true;
+    after = [ "sound.target" ];
+    wantedBy = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.lib.getExe' pkgs.alsa-utils "alsactl"} --file /home/finnb/.config/alsa/asound.state restore";
+    };
+  };
+
   system.stateVersion = "25.05"; # Did you read the comment?
 }

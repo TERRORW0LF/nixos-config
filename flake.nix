@@ -65,13 +65,20 @@
           nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = {
-              inherit inputs name level input;
+              inherit
+                inputs
+                name
+                level
+                input
+                ;
             };
             modules = [
+              agenix.nixosModules.default
               ./overlays
               ./hosts/base.nix
               ./hosts/laptop
               ./modules/base.nix
+              ./modules/secrets.nix
               ./modules/graphics.nix
               ./modules/graphical.nix
               ./modules/sound.nix

@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   # Postgresql
   services.pgadmin = {
     enable = true;
     initialEmail = "finn2003minicooper@gmail.com";
-    initialPasswordFile = "/etc/postgrespw.txt";
+    initialPasswordFile = config.age.secrets.pgadminPw.path;
   };
 
   services.postgresql = {

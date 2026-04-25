@@ -31,6 +31,8 @@
     raspberrypi-eeprom
   ];
 
+  age.identityPaths = [ "/home/rpi/.ssh/rpi" ];
+
   networking =
     let
       prefix = lib.strings.removeSuffix "\n" (builtins.readFile ../../secrets/ipv6Prefix.txt);
