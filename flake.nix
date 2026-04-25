@@ -2,6 +2,11 @@
   description = "Shared system flake";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+    };
     nix-matlab = {
       url = "gitlab:doronbehar/nix-matlab";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,6 +17,7 @@
     inputs@{
       self,
       nixpkgs,
+      agenix,
       nix-matlab,
       ...
     }:
@@ -24,7 +30,6 @@
             input = "alsa_input.usb-Beyerdynamic_FOX_5.00-00.mono-fallback";
           in
           nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
             specialArgs = {
               inherit
                 inputs
@@ -52,7 +57,6 @@
             ];
           };
         laptop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           modules = [ ];
         };
         rpi =
@@ -60,15 +64,16 @@
             name = "rpi";
           in
           nixpkgs.lib.nixosSystem {
-            system = "aarch64-linux";
             specialArgs = {
               inherit inputs name;
             };
             modules = [
+              agenix.nixosModules.default
               ./overlays
               ./hosts/base.nix
               ./hosts/rpi
               ./modules/base.nix
+              ./modules/secrets.nix
               ./modules/ssh.nix
               ./modules/git.nix
               ./modules/neovim.nix

@@ -37,6 +37,8 @@
     clinfo
   ];
 
+  networking.firewall.enable = true;
+
   services.ratbagd.enable = true;
   system.stateVersion = "25.05"; # Did you read the comment?
 }
