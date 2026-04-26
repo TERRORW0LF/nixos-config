@@ -37,7 +37,7 @@
     clinfo
   ];
 
-  networking.firewall.enable = true;
+  age.identityPaths = [ "/home/finnb/.ssh/desktop" ];
 
   services.ratbagd.enable = true;
   system.stateVersion = "25.05"; # Did you read the comment?
