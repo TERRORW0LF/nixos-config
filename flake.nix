@@ -39,10 +39,12 @@
                 ;
             };
             modules = [
+              agenix.nixosModules.default
               ./overlays
               ./hosts/base.nix
               ./hosts/desktop
               ./modules/base.nix
+              ./modules/secrets.nix
               ./modules/graphics.nix
               ./modules/graphical.nix
               ./modules/sound.nix
