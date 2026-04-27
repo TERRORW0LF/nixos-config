@@ -1,9 +1,16 @@
 vim.g.mapleader = " "
+vim.o.updatetime = 250
 vim.diagnostic.enable = true
 vim.diagnostic.config({
 	virtual_lines = false,
 	virtual_text = true
 })
+vim.api.nvim_create_autocmd({'CursorHold', 'CursorHoldI'}, {
+	callback = function(args)
+		vim.diagnostic.open_float(nil, { focus = false })
+	end
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('lsp', { clear = true }),
 	callback = function(args)
