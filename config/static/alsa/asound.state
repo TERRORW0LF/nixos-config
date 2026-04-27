@@ -1,0 +1,48 @@
+
+state.Generic_1 {
+	control.2 {
+		iface MIXER
+		name 'Bass Speaker Playback Volume'
+		value.0 87
+		value.1 87
+		comment {
+			access 'read write'
+			type INTEGER
+			count 2
+			range '0 - 87'
+			dbmin -6525
+			dbmax 0
+			dbvalue.0 0
+			dbvalue.1 0
+		}
+	}
+	control.4 {
+		iface MIXER
+		name 'Headphone Playback Volume'
+		value.0 87
+		value.1 87
+		comment {
+			access 'read write'
+			type INTEGER
+			count 2
+			range '0 - 87'
+			dbmin -6525
+			dbmax 0
+			dbvalue.0 0
+			dbvalue.1 0
+		}
+	}
+	control.10 {
+		iface MIXER
+		name 'Master Playback Volume'
+		value 87
+		comment {
+			access 'read write'
+			type INTEGER
+			count 1
+			range '0 - 87'
+		}
+	}
+}
+State.Generic {}
+State.acppdmmach {}

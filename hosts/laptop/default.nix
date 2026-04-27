@@ -37,7 +37,7 @@
     wantedBy = [ "graphical-session.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.lib.getExe' pkgs.alsa-utils "alsactl"} --file /home/finnb/.config/alsa/asound.state restore";
+      ExecStart = "${pkgs.lib.getExe' pkgs.alsa-utils "alsactl"} --file ${pkgs.static-configs}/alsa/asound.state restore";
     };
   };
 
