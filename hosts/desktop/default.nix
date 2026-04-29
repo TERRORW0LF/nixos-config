@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   imports = [ ./hardware-configuration.nix ];
 
@@ -6,6 +6,7 @@
   boot.loader.grub.enable = false;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.extraModulePackages = with config.boot.kernelPackages; [ new-lg4ff ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -31,6 +32,7 @@
     krita
     simple-scan
     piper
+    oversteer
     hunspell
     hunspellDicts.en_US
     hunspellDicts.de_DE
