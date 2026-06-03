@@ -33,6 +33,13 @@
 
   age.identityPaths = [ "/home/rpi/.ssh/rpi" ];
 
+  services.udev.extraRules = ''
+    ATTRS{idVendor}=="1b1f", ATTRS{idProduct}=="c020", ENV{ID_MM_DEVICE_IGNORE}="1"
+    ATTRS{idVendor}=="1b1f", ATTRS{idProduct}=="c00f", ENV{ID_MM_DEVICE_IGNORE}="1"
+    ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6f70", ENV{ID_MM_DEVICE_IGNORE}="1"
+    ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="8c07", ENV{ID_MM_DEVICE_IGNORE}="1"
+  '';
+
   networking =
     let
       prefix = lib.strings.removeSuffix "\n" (builtins.readFile ../../secrets/ipv6Prefix.txt);
@@ -48,6 +55,30 @@
         extraConfig = "noipv6";
       };
       networkmanager.unmanaged = [ "end0" ];
+      macvlans.ccu-shim = {
+        mode = "bridge";
+        interface = "end0";
+      };
+      interfaces.ccu-shim = {
+        useDHCP = false;
+        ipv4 = {
+          addresses = [
+            {
+              address = "192.168.178.6";
+              prefixLength = 32;
+            }
+          ];
+          routes = [
+            {
+              address = "192.168.178.7";
+              prefixLength = 32;
+              options = {
+                protocol = "static";
+              };
+            }
+          ];
+        };
+      };
       interfaces.end0 = {
         useDHCP = false;
         ipv4 = {
