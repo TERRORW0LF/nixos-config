@@ -49,6 +49,7 @@
               ./modules/graphical.nix
               ./modules/sound.nix
               ./modules/printing.nix
+              ./modules/file_share.nix
               ./modules/git.nix
               ./modules/postgres.nix
               ./modules/neovim.nix
@@ -85,6 +86,7 @@
               ./modules/graphical.nix
               ./modules/sound.nix
               ./modules/printing.nix
+              ./modules/file_share.nix
               ./modules/git.nix
               ./modules/postgres.nix
               ./modules/neovim.nix

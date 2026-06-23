@@ -64,9 +64,6 @@
   programs.direnv.enable = true;
   programs.dconf.enable = true;
 
-  # List services that you want to enable:
-  services.onedrive.enable = true;
-
   # Regularly optimise system
   nix.optimise.automatic = true;
   nix.gc = {
