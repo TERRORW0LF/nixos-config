@@ -13,19 +13,21 @@ stdenv.mkDerivation (finalAttrs: {
     owner = "alexreinert";
     repo = "piVCCU";
     rev = "f0d144136d25ae8bb9ab3af5175165602fb6b21c";
-    hash = "";
+    hash = "sha256-Khep4yxuVgd8S7mcId8FNyB4IApKuM6xMUzmN5PGh4M=";
   };
+
+  patches = [ ./Makefile.patch ];
 
   nativeBuildInputs = kernel.moduleBuildDependencies;
   hardeningDisable = [ "pic" ];
   makeFlags = kernelModuleMakeFlags ++ [
     "KERNELRELEASE=${kernel.modDirVersion}"
-    "KERNEL_DIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+    "KERNEL_DIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/source"
     "INSTALL_MOD_PATH=$(out)"
   ];
 
-  postUnpackPhase = ''
-    mv -r kernel/* ./
+  postUnpack = ''
+    mv source/kernel/* source/
     cat <<EOF >> dkms.conf
     PACKAGE_NAME="pivccu"
     PACKAGE_VERSION="1.0.89"

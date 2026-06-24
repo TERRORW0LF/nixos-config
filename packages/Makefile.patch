@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index c6eba9f..a3bed5b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -29,6 +29,9 @@
+ all:
+ 	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) modules
+ 
++install:
++	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) modules_install
++
+ clean:
+ 	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) clean
+ 

@@ -15,7 +15,7 @@
   boot.loader.generic-extlinux-compatible.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.extraModulePackages = [ config.boot.linuxPackages.pivccu-modules-dkms ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.pivccu ];
   boot.kernelModules = [
     "hci_uart"
     "bluetooth"
