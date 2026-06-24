@@ -33,5 +33,17 @@
         );
       }
     )
+    (final: prev: {
+      linuxPackages = prev.linuxPackages.extend (
+        final': prev': {
+          pivccu = prev'.callPackage ../package/pivccu-modules-dkms.nix { };
+        }
+      );
+      linuxPackages_latest = prev.linuxPackages_latest.extend (
+        final': prev': {
+          pivccu = prev'.callPackage ../package/pivccu-modules-dkms.nix { };
+        }
+      );
+    })
   ];
 }

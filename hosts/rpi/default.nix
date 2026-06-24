@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -10,6 +15,7 @@
   boot.loader.generic-extlinux-compatible.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.extraModulePackages = [ config.boot.linuxPackages.pivccu-modules-dkms ];
   boot.kernelModules = [
     "hci_uart"
     "bluetooth"
@@ -17,6 +23,8 @@
     "btbcm"
     "bnep"
     "ip6table_filter"
+    "generic_raw_uart"
+    "eq3_char_loop"
   ];
 
   boot.kernel.sysctl = {
