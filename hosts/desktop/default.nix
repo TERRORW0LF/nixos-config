@@ -39,6 +39,44 @@
     clinfo
   ];
 
+  services.pipewire = {
+    extraConfig = {
+      pipewire."99-allow-sample-rates" = {
+        "context.properties" = {
+          "default.clock.allowed-rates" = [
+            44100
+            48000
+            88200
+            96000
+            176400
+            192000
+          ];
+        };
+      };
+    };
+    wireplumber.extraConfig."99-disable-suspend" = {
+      "monitor.alsa.rules" = [
+        {
+          matches = [
+            {
+              # Matches all sources
+              "node.name" =
+                "~alsa_output.usb-TOPPING_DX1_II_00MMG-0QK05-V9UPF-SEVCM-DPCZ5-0XG64-00.HiFi__Headphones__sink";
+            }
+
+          ];
+          actions = {
+            update-props = {
+              "session.suspend-timeout-seconds" = 0;
+              "dither.method" = "wannamaker3"; # add dither of desired shape
+              "dither.noise" = 2; # add additional bits of noise
+            };
+          };
+        }
+      ];
+    };
+  };
+
   age.identityPaths = [ "/home/finnb/.ssh/desktop" ];
 
   services.ratbagd.enable = true;
