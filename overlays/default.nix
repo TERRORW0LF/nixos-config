@@ -8,6 +8,9 @@
 {
   nixpkgs.overlays = [
     inputs.nix-matlab.overlay
+    (final: prev: {
+      static-configs = prev.callPackage ../config/static { };
+    })
     (
       final: prev:
       let
