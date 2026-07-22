@@ -36,6 +36,7 @@
     hunspell
     hunspellDicts.en_US
     hunspellDicts.de_DE
+    nixpkgs-review
     clinfo
   ];
 
