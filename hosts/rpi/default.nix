@@ -15,6 +15,8 @@
   boot.loader.generic-extlinux-compatible.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Kernel.
+  boot.kernelPackages = pkgs.linuxPackages;
   boot.extraModulePackages = [ config.boot.kernelPackages.pivccu ];
   boot.kernelModules = [
     "hci_uart"
