@@ -57,6 +57,7 @@
               ./modules/obs.nix
               ./modules/virtualisation.nix
               ./users/finn.nix
+              ./users/remotebuild.nix
             ];
           };
         laptop =
@@ -115,6 +116,7 @@
               ./modules/git.nix
               ./modules/neovim.nix
               ./modules/virtualisation.nix
+              ./modules/remote-builders.nix
               ./users/rpi.nix
             ];
           };
