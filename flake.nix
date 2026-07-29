@@ -117,7 +117,7 @@
               ./modules/git.nix
               ./modules/neovim.nix
               ./modules/virtualisation.nix
-              ./modules/remote-builders.nix
+              ./modules/remote_builders.nix
               ./users/rpi.nix
             ];
           };
