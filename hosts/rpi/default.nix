@@ -17,6 +17,15 @@
 
   # Kernel.
   boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPatches = [
+    {
+      name = "enable_reachability";
+      patch = ./reachability.patch;
+      structuredExtraConfig = {
+        IPV6_REACHABILITY_PROBE = lib.kernel.yes;
+      };
+    }
+  ];
   boot.extraModulePackages = [ config.boot.kernelPackages.pivccu ];
   boot.kernelModules = [
     "hci_uart"
@@ -32,8 +41,9 @@
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;
     "net.ipv6.conf.all.forwarding" = 1;
-    "net.ipv6.end0.accept_ra" = 2;
-    "net.ipv6.end0.accept_ra_rt_info_max_plen" = 64;
+    "net.ipv6.conf.end0.autoconf" = 1;
+    "net.ipv6.conf.end0.accept_ra" = 2;
+    "net.ipv6.conf.end0.accept_ra_rt_info_max_plen" = 64;
   };
 
   environment.systemPackages = with pkgs; [
@@ -56,6 +66,16 @@
       8123
       8981
     ];
+    networkmanager.unmanaged = [
+      "end0"
+      "wpan0"
+    ];
+    dhcpcd = {
+      IPv6rs = false;
+      extraConfig = ''
+        noipv6
+      '';
+    };
     macvlans.ccu-shim = {
       mode = "bridge";
       interface = "end0";
