@@ -51,6 +51,7 @@
               ./modules/printing.nix
               ./modules/file_share.nix
               ./modules/git.nix
+              ./modules/ssh.nix
               ./modules/postgres.nix
               ./modules/neovim.nix
               ./modules/steam.nix
