@@ -37,7 +37,7 @@
         noipv6
       '';
     };
-    interfaces.end0 = {
+    interfaces.eno1 = {
       useDHCP = true;
     };
   };

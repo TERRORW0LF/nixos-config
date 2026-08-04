@@ -3,7 +3,7 @@
   users = {
     mutableUsers = false;
     users = {
-      rpi = {
+      nuc = {
         isNormalUser = true;
         hashedPassword = "$y$j9T$g4aR6DDD7hoC2kFpLHKEx1$2tUMqiD2Y/5JDIeivR6nqHMGlr7Tk1RgqxW9LW3zqT1";
         openssh.authorizedKeys.keys = [
