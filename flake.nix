@@ -121,6 +121,28 @@
               ./users/rpi.nix
             ];
           };
+        nuc =
+          let
+            name = "nuc";
+          in
+          nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs name;
+            };
+            modules = [
+              agenix.nixosModules.default
+              ./overlays
+              ./hosts/base.nix
+              ./hosts/nuc
+              ./modules/base.nix
+              ./modules/secrets.nix
+              ./modules/ssh.nix
+              ./modules/git.nix
+              ./modules/neovim.nix
+              ./modules/virtualisation.nix
+              ./users/nuc.nix
+            ];
+          };
       };
     };
 }
