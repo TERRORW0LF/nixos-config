@@ -20,7 +20,7 @@
   boot.kernelPatches = [
     {
       name = "enable_reachability";
-      patch = ./reachability.patch;
+      patch = ../reachability.patch;
       structuredExtraConfig = {
         IPV6_REACHABILITY_PROBE = lib.kernel.yes;
       };

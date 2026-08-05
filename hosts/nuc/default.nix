@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
@@ -13,10 +14,21 @@
 
   # Kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPatches = [
+    {
+      name = "enable_reachability";
+      patch = ../reachability.patch;
+      structuredExtraConfig = {
+        IPV6_REACHABILITY_PROBE = lib.kernel.yes;
+      };
+    }
+  ];
 
   boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+    "net.ipv6.conf.all.forwarding" = 1;
     "net.ipv6.conf.eno1.autoconf" = 1;
-    "net.ipv6.conf.eno1.accept_ra" = 1;
+    "net.ipv6.conf.eno1.accept_ra" = 2;
     "net.ipv6.conf.eno1.accept_ra_rt_info_max_plen" = 64;
   };
 
@@ -39,6 +51,10 @@
     };
     interfaces.eno1 = {
       useDHCP = true;
+    };
+    defaultGateway6 = {
+      address = "fe80::9a9b:cbff:febe:41eb";
+      interface = "eno1";
     };
   };
 

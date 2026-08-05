@@ -140,6 +140,7 @@
               ./modules/git.nix
               ./modules/neovim.nix
               ./modules/virtualisation.nix
+              ./modules/remote_builders.nix
               ./users/nuc.nix
             ];
           };
