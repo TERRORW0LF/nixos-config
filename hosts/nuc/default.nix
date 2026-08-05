@@ -45,16 +45,9 @@
     ];
     dhcpcd = {
       IPv6rs = false;
-      extraConfig = ''
-        noipv6
-      '';
     };
     interfaces.eno1 = {
       useDHCP = true;
-    };
-    defaultGateway6 = {
-      address = "fe80::9a9b:cbff:febe:41eb";
-      interface = "eno1";
     };
   };
 
