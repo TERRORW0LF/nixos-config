@@ -161,6 +161,7 @@
               ./modules/secrets.nix
               ./modules/ssh.nix
               ./modules/git.nix
+              ./modules/postgres.nix
               ./modules/neovim.nix
               ./users/lsl.nix
             ];
