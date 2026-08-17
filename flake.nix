@@ -144,6 +144,27 @@
               ./users/nuc.nix
             ];
           };
+        lsl =
+          let
+            name = "lsl";
+          in
+          nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs name;
+            };
+            modules = [
+              agenix.nixosModules.default
+              ./overlays
+              ./hosts/base.nix
+              ./hosts/lsl
+              ./modules/base.nix
+              ./modules/secrets.nix
+              ./modules/ssh.nix
+              ./modules/git.nix
+              ./modules/neovim.nix
+              ./users/lsl.nix
+            ];
+          };
       };
     };
 }
