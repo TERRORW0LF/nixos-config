@@ -5,7 +5,7 @@ let
     (import (
       builtins.fetchGit {
         url = "https://github.com/nix-community/nix-vscode-extensions";
-        rev = "8b186aaef70c2fc386ccdaaa513940cb1124e75a";
+        rev = "df89bf3ab92545d6932675cf9d742cb0e687f428";
       }
     )).extensions.${system};
   extensionsList =
