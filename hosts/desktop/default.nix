@@ -19,7 +19,6 @@
     matlab
     haruna
     kdePackages.kcalc
-    brave
     vesktop
     prismlauncher
     (lutris.override {

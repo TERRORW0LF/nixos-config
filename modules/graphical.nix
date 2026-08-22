@@ -15,5 +15,81 @@
   };
 
   # Webbrowser
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    policies = {
+      NoDefaultBookmarks = true;
+      DisableAccounts = true;
+      Homepage = {
+        StartPage = "previous-session";
+      };
+      FirefoxHome = {
+        Search = true;
+        TopSites = true;
+        SponsoredTopSites = false;
+        Highlights = true;
+        Pocket = false;
+        Stories = false;
+        SponsoredPocket = false;
+        SponsoredStories = false;
+        Snippets = false;
+        Locked = false;
+      };
+      Cookies = {
+        Behavior = "partition-foreign";
+        Locked = true;
+      };
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+        EmailTracking = true;
+        SuspectedFingerprinting = true;
+        Category = "strict";
+        BaselineExceptions = true;
+        ConvenienceExceptions = false;
+      };
+      SearchEngines = {
+        PreventInstalls = true;
+        Default = "DuckDuckGo";
+        Remove = [
+          "Perplexity"
+          "Bing"
+          "Ecosia"
+        ];
+      };
+      AIControls = {
+        Default = {
+          Value = "available";
+          Locked = false;
+        };
+        SmartTabGroups = {
+          Value = "blocked";
+        };
+        SidebarChatbot = {
+          Value = "blocked";
+        };
+        SmartWindow = {
+          Value = "blocked";
+        };
+      };
+      ExtensionSettings = {
+        "addon@darkreader.org" = {
+          installation_mode = "normal_installed";
+          default_area = "navbar";
+          private_browsing = true;
+        };
+        "uBlock0@raymondhill.net" = {
+          installation_mode = "normal_installed";
+          default_area = "navbar";
+          private_browsing = true;
+        };
+      };
+      Preferences = {
+        "browser.taskbar-tabs.enabled".Value = true;
+        "widget.use-xdg-desktop-portal.file-picker".Value = 1;
+      };
+    };
+  };
 }

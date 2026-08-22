@@ -17,7 +17,6 @@
     (callPackage ../../modules/vscode.nix { })
     haruna
     kdePackages.kcalc
-    brave
     vesktop
     osu-lazer-bin
     audacity
