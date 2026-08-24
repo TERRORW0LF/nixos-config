@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 vim.o.updatetime = 250
-vim.diagnostic.enable = true
+vim.diagnostic.enable(true)
 vim.diagnostic.config({
 	virtual_lines = false,
 	virtual_text = true
