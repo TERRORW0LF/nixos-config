@@ -1,13 +1,6 @@
-{
-  config,
-  pkgs,
-  inputs,
-  lib,
-  ...
-}:
+{ ... }:
 {
   nixpkgs.overlays = [
-    inputs.nix-matlab.overlay
     (final: prev: {
       static-configs = prev.callPackage ../config/static { };
     })

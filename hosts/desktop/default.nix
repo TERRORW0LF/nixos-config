@@ -16,7 +16,6 @@
   environment.systemPackages = with pkgs; [
     neovide
     (callPackage ../../modules/vscode.nix { })
-    matlab
     haruna
     kdePackages.kcalc
     vesktop
