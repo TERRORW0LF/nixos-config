@@ -90,6 +90,7 @@
         "browser.taskbarTabs.enabled".Value = true;
         "widget.use-xdg-desktop-portal.file-picker".Value = 1;
         "widget.use-xdg-desktop-portal.mime-handler".Value = 1;
+        "dom.disable_beforeunload".Value = true;
       };
     };
   };
