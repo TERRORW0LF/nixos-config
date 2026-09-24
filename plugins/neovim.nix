@@ -13,6 +13,7 @@ with pkgs.vimPlugins;
   cmp-nvim-lsp
   cmp-nvim-lsp-signature-help
   luasnip
+  nvim-comment
   telescope-nvim
   telescope-fzf-native-nvim
   toggleterm-nvim

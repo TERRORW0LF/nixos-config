@@ -18,6 +18,9 @@
             neovim-tasks = prev.callPackage ../packages/neovim-tasks.nix {
               inherit buildVimPlugin;
             };
+            rust-expand-macro-nvim = prev.callPackage ../packages/rust-expand-macro-nvim.nix {
+              inherit buildVimPlugin;
+            };
           }
         );
       }
