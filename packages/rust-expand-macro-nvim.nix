@@ -8,8 +8,8 @@ buildVimPlugin {
   src = fetchFromGitHub {
     owner = "vxpm";
     repo = "rust-expand-macro.nvim";
-    rev = "66e6e7bcc2201bd602598317855266c0eaf65085";
-    hash = "";
+    rev = "71536e492351b6ef049de022541985b8b159e4f5";
+    hash = "sha256-T7wzziTElK7WmeDF49J9h6BPUJ8QijYVaL4i8vHmOu8=";
   };
   meta.homepage = "https://github.com/vxpm/rust-expand-macro.nvim";
   meta.hydraPlatforms = [ ];
