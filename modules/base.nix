@@ -60,11 +60,4 @@
   # Enable direnv for easy dev environments
   programs.direnv.enable = true;
   programs.dconf.enable = true;
-
-  # Regularly optimise system
-  nix.optimise.automatic = true;
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-  };
 }

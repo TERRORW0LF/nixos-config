@@ -119,5 +119,12 @@
     };
   };
 
+  # Regularly optimise system
+  nix.optimise.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+  };
+
   system.stateVersion = "25.11";
 }

@@ -56,5 +56,12 @@
     powerOnBoot = true;
   };
 
+  # Regularly optimise system
+  nix.optimise.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+  };
+
   system.stateVersion = "26.05";
 }

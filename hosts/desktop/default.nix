@@ -82,5 +82,13 @@
   age.identityPaths = [ "/home/finnb/.ssh/desktop" ];
 
   services.ratbagd.enable = true;
+
+  # Regularly optimise system
+  nix.optimise.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+  };
+
   system.stateVersion = "25.05"; # Did you read the comment?
 }
