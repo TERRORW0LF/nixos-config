@@ -10,6 +10,7 @@
   # Kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = with config.boot.kernelPackages; [ new-lg4ff ];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

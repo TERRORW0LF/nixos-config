@@ -9,6 +9,7 @@
 
   # Kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.supportedFilesystems = [ "ntfs" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
