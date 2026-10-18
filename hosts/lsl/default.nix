@@ -28,6 +28,8 @@
     # useXkbConfig = true; # use xkb.options in tty.
   };
 
+  services.qemuGuest.enable = true;
+
   # List services that you want to enable:
   services.nginx = {
     enable = true;
