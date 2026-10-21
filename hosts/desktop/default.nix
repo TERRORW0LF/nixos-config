@@ -26,7 +26,7 @@
       extraPkgs = pkgs: [ ];
     })
     osu-lazer-bin
-    audacity
+    #audacity
     losslesscut-bin
     davinci-resolve
     libreoffice-qt

@@ -20,7 +20,7 @@
     kdePackages.kcalc
     vesktop
     osu-lazer-bin
-    audacity
+    #audacity
     losslesscut-bin
     libreoffice-qt
     xournalpp
