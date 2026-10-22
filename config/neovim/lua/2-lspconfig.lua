@@ -1,5 +1,5 @@
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local servers = { 'clangd', 'cmake', 'cssls', 'emmylua_ls', 'eslint', 'jsonls', 'nil_ls', 'ts_ls', 'rust_analyzer' }
+local servers = { 'clangd', 'cmake', 'cssls', 'emmylua_ls', 'eslint', 'jsonls', 'nil_ls', 'tinymist', 'ts_ls', 'rust_analyzer' }
 
 for _, lsp in pairs(servers) do
 	vim.lsp.config(lsp, {
@@ -15,6 +15,16 @@ vim.lsp.config('nil_ls', {
 				autoArchive = true,
 			},
 		},
+	},
+})
+vim.lsp.config('tinymist', {
+	capabilities = capabilities,
+	settings = {
+		formatterMode = 'typstfmt',
+		formatterPrintWidth = 100,
+		formatterIndentSize = 2,
+		formatterProseWrap = 'sentence',
+		exportPdf = 'onSave',
 	},
 })
 

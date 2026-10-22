@@ -6,6 +6,7 @@ with pkgs.vimPlugins;
   nvim-treesitter.withAllGrammars
   nvim-lspconfig
   rust-expand-macro-nvim
+  typst-preview-nvim
   nvim-dap
   nvim-dap-virtual-text
   neovim-tasks
