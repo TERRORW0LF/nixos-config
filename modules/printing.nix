@@ -12,7 +12,7 @@
     enable = true;
     nssmdns4 = true;
     nssmdns6 = true;
-    ipv6 = true;
+    settings.server.use-ipv6 = true;
     openFirewall = true;
   };
 
