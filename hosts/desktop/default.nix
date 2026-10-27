@@ -9,7 +9,7 @@
 
   # Kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.extraModulePackages = with config.boot.kernelPackages; [ fixed-new-lg4ff ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ new-lg4ff ];
   boot.supportedFilesystems = [ "ntfs" ];
 
   # List packages installed in system profile. To search, run:
@@ -26,7 +26,7 @@
       extraPkgs = pkgs: [ ];
     })
     osu-lazer-bin
-    #audacity
+    audacity
     losslesscut-bin
     davinci-resolve
     libreoffice-qt

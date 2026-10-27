@@ -37,12 +37,5 @@
         }
       );
     })
-    (final: prev: {
-      linuxPackages_latest = prev.linuxPackages_latest.extend (
-        final': prev': {
-          fixed-new-lg4ff = prev'.callPackage ../packages/fixed-new-lg4ff.nix { };
-        }
-      );
-    })
   ];
 }
