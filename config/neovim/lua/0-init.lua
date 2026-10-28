@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', 'ß', '$')
+vim.keymap.set({'n', 'v'}, 'ß', '$')
 
 local nav_opts = { buffer = 0 }
 vim.keymap.set({'n', 'i', 't'}, '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
