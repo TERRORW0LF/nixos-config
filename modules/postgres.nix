@@ -30,6 +30,7 @@
       superuser_map      postgres   postgres
       superuser_map      pgadmin    postgres
       superuser_map      finnb      postgres
+      superuser_map      finnb      lsl
       # Let other names login as themselves
       superuser_map      /^(.*)$    \1
     '';
