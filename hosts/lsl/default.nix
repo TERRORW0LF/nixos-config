@@ -30,6 +30,21 @@
 
   services.qemuGuest.enable = true;
 
+  # Ipv6 shit
+  networking.interfaces.ens3 = {
+    useDHCP = true;
+    ipv6.addresses = [
+      {
+        address = "2a03:4000:43:7f0::2";
+        prefixLength = 64;
+      }
+      {
+        address = "2a03:4000:43:7f0::3";
+        prefixLength = 64;
+      }
+    ];
+  };
+
   # List services that you want to enable:
   services.nginx = {
     enable = true;
@@ -41,10 +56,10 @@
           addr = "194.13.81.46";
           port = 80;
         }
-        #{
-        #  addr = "[2a03:4000:43:7f0::]";
-        #  port = 80;
-        #}
+        {
+          addr = "[2a03:4000:43:7f0::3]";
+          port = 80;
+        }
       ];
       locations."/.well-known/" = {
         root = "/var/lib/acme/learn.lucio.surf/";
@@ -62,11 +77,11 @@
           addr = "194.13.81.46";
           port = 443;
         }
-        #{
-        #  ssl = true;
-        #  addr = "[2a03:4000:43:7f0::]";
-        #  port = 443;
-        #}
+        {
+          ssl = true;
+          addr = "[2a03:4000:43:7f0::3]";
+          port = 443;
+        }
       ];
       locations."/.well-known/" = {
         root = "/var/lib/acme/lucio.surf/";
@@ -85,10 +100,10 @@
           addr = "194.13.81.46";
           port = 80;
         }
-        #{
-        #  addr = "[2a03:4000:43:7f0::]";
-        #  port = 80;
-        #}
+        {
+          addr = "[2a03:4000:43:7f0::2]";
+          port = 80;
+        }
       ];
       locations."/.well-known/" = {
         root = "/var/lib/acme/lucio.surf/";
@@ -105,11 +120,11 @@
           addr = "194.13.81.46";
           port = 443;
         }
-        #{
-        #  ssl = true;
-        #  addr = "[2a03:4000:43:7f0::]";
-        #  port = 443;
-        #}
+        {
+          ssl = true;
+          addr = "[2a03:4000:43:7f0::2]";
+          port = 443;
+        }
       ];
       locations."/.well-known/" = {
         root = "/var/lib/acme/lucio.surf/";
